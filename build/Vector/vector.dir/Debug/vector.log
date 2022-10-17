@@ -1,0 +1,30 @@
+﻿  main.cpp
+D:\Games\Все проги\visual studio\projects\Laba3.2\Matrix_Lab\VectorLib\Vector.h(290,1): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Games\Все проги\visual studio\projects\Laba3.2\Matrix_Lab\VectorLib\Vector.h(289): message : во время компиляции функции-члена класс шаблон "TVectorIterator<T> TDynamicVector<T>::end(void)"
+          with
+          [
+              T=int
+          ]
+D:\Games\Все проги\visual studio\projects\Laba3.2\Matrix_Lab\Vector\main.cpp(19): message : выполняется компиляция ссылки на экземпляр шаблон функции "TVectorIterator<T> TDynamicVector<T>::end(void)"
+          with
+          [
+              T=int
+          ]
+D:\Games\Все проги\visual studio\projects\Laba3.2\Matrix_Lab\Vector\main.cpp(8): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "TDynamicVector<int>"
+D:\Games\Все проги\visual studio\projects\Laba3.2\Matrix_Lab\VectorLib\Vector.h(353,1): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Games\Все проги\visual studio\projects\Laba3.2\Matrix_Lab\VectorLib\Vector.h(349): message : во время компиляции функции-члена класс шаблон "TVectorIterator<T> TVectorIterator<T>::operator ++(void)"
+          with
+          [
+              T=int
+          ]
+D:\Games\Все проги\visual studio\projects\Laba3.2\Matrix_Lab\Vector\main.cpp(19): message : выполняется компиляция ссылки на экземпляр шаблон функции "TVectorIterator<T> TVectorIterator<T>::operator ++(void)"
+          with
+          [
+              T=int
+          ]
+D:\Games\Все проги\visual studio\projects\Laba3.2\Matrix_Lab\Vector\main.cpp(19): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "TVectorIterator<T>"
+          with
+          [
+              T=int
+          ]
+  vector.vcxproj -> D:\Games\Все проги\visual studio\projects\Laba3.2\Matrix_Lab\build\Vector\Debug\vector.exe

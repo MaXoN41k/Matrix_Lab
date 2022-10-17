@@ -1,0 +1,10 @@
+^D:\GAMES\ВСЕ ПРОГИ\VISUAL STUDIO\PROJECTS\LABA3.2\MATRIX_LAB\VECTOR\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/Games/Все проги/visual studio/projects/Laba3.2/Matrix_Lab" "-BD:/Games/Все проги/visual studio/projects/Laba3.2/Matrix_Lab/build" --check-stamp-file "D:/Games/Все проги/visual studio/projects/Laba3.2/Matrix_Lab/build/Vector/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -3,7 +3,7 @@
 #include "VectorIterator.h"
 using namespace std;
 
-template <typename T>
+template <class T>
 class TVectorIterator;
 
 template <typename T>
@@ -292,7 +292,7 @@ inline TVectorIterator<T> TDynamicVector<T>::end()
 
 ////////////////////////////////
 
-template <typename T>
+template <class T>
 class TVectorIterator
 {
 public:
@@ -348,6 +348,7 @@ template<typename T>
 inline TVectorIterator<T> TVectorIterator<T>::operator++()
 {
   TVectorIterator<T> res(*this);
+  this->index++;
   res.index++;
   if (res.index > res.vector.size())
     res.index = res.vector.size();

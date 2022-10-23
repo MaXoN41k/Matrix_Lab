@@ -1,4 +1,0 @@
-D:/Games/Все проги/visual studio/projects/Laba3.2/Matrix_Lab/build/CMakeFiles/ALL_BUILD.dir
-D:/Games/Все проги/visual studio/projects/Laba3.2/Matrix_Lab/build/CMakeFiles/ZERO_CHECK.dir
-D:/Games/Все проги/visual studio/projects/Laba3.2/Matrix_Lab/build/Vector/CMakeFiles/vector.dir
-D:/Games/Все проги/visual studio/projects/Laba3.2/Matrix_Lab/build/VectorLib/CMakeFiles/vectorLib.dir

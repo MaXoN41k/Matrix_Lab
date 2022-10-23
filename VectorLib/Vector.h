@@ -12,14 +12,13 @@ class TDynamicVector
 protected:
   size_t sz;
   T* pMem;
-
 public:
   TDynamicVector(size_t size = 1);
   TDynamicVector(T* arr, size_t s);
   TDynamicVector(const TDynamicVector<T>& v);
   TDynamicVector(TDynamicVector<T>&& v) noexcept;
   ~TDynamicVector();
-  TDynamicVector<T>& operator=(TDynamicVector<T>& v);
+  TDynamicVector<T>& operator=(const TDynamicVector<T>& v);
   TDynamicVector<T>& operator=(TDynamicVector<T>&& v) noexcept;
 
   size_t size(void) const noexcept;
@@ -66,7 +65,7 @@ inline TDynamicVector<T>::TDynamicVector(size_t size)
   sz = size;
   pMem = new T[sz];
   for (int i = 0; i < sz; i++)
-    pMem[i] = 0;
+    pMem[i] = {};
 }
 
 template<typename T>
@@ -116,11 +115,12 @@ inline TDynamicVector<T>::~TDynamicVector()
   {
     delete[] pMem;
     sz = 0;
+    pMem = nullptr;
   }
 }
 
 template<typename T>
-inline TDynamicVector<T>& TDynamicVector<T>::operator=(TDynamicVector<T>& v)
+inline TDynamicVector<T>& TDynamicVector<T>::operator=(const TDynamicVector<T>& v)
 {
   if (this != &v)
   {    
@@ -332,10 +332,7 @@ inline TVectorIterator<T>::TVectorIterator(TVectorIterator<T>& iv) :vector(iv.ve
 template<typename T>
 inline bool TVectorIterator<T>::operator==(const TVectorIterator<T>& v)
 {
-  if (&vector == &(v.vector) && index == v.index)
-    return true;
-  else
-    return false;
+  return (&vector == &(v.vector) && index == v.index);
 }
 
 template<typename T>

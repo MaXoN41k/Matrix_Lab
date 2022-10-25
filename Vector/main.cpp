@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Vector.h"
 #include "SquareMatrix.h"
+#include "TrangleMatrix.h"
 #include <sstream>
 using namespace std;
 
@@ -86,6 +87,51 @@ void testVectorIterator()
 
 }
 
+void testCreateTrangleMatrix()
+{
+  TTrangleMatrix<int> m(3);
+  m[0][0] = 1;
+  m[1][0] = 2;
+  m[1][1] = 3;
+  m[2][0] = 4;
+  m[2][1] = 5;
+  m[2][2] = 6;
+  cout << m;
+}
+
+void testOperTrangleMatrix()
+{
+  int k = 1;
+  TTrangleMatrix<int> m(3);
+  TTrangleMatrix<int> m1(m);
+  for (int i = 0; i < m.size(); i++)
+    for (int j = 0; j <= i; j++)
+    {
+      m[i][j] = k;
+      m1[i][j] = k + 1;
+      k++;
+    }
+  TTrangleMatrix<int> m2(3);
+  m2 = m + m1;
+  cout << "m1=\n" << m;
+  cout << "m2=\n" << m1;
+  cout << "m3=m1+m2\n" << m2;
+}
+
+void testMultTrangle()
+{
+  int arr[3] = { 1,2,3 };
+  int arr1[3] = { 2,3,1 };
+
+  TTrangleMatrix<int> m(2, arr);
+  TTrangleMatrix<int> m1(2, arr1);
+  TTrangleMatrix<int> m2(2);
+  m2 = m * m1;
+  cout << "m1=\n" << m;
+  cout << "m2=\n" << m1;
+  cout << "m3=m1*m2\n" << m2;
+}
+
 int main()
 {
   try
@@ -93,7 +139,10 @@ int main()
     //testCreateMatix();
     //testMultMatrix();
     //testVectorIterator();
-    testMatrix();
+    //testMatrix();
+    //testCreateTrangleMatrix();
+    //testOperTrangleMatrix();
+    testMultTrangle();
   }
   catch (...)
   {

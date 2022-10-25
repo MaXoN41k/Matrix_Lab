@@ -35,6 +35,7 @@ inline TSquareMatrix<T>::TSquareMatrix(size_t size, const T* arr) : TSquareMatri
 template<class T>
 inline TSquareMatrix<T>::TSquareMatrix(size_t size1): TDynamicVector<TDynamicVector<T>> (size1)
 {
+  sz = size1;
   for (size_t i = 0; i < sz; i++)
     pMem[i] = TDynamicVector<T>(sz);
 }
@@ -80,6 +81,8 @@ inline bool TSquareMatrix<T>::operator!=(const TSquareMatrix<T>& mat) const noex
 template<class T>
 inline TSquareMatrix<T> TSquareMatrix<T>::operator+(const TSquareMatrix<T>& mat)
 {
+  if (sz != mat.sz)
+    throw "different sizes";
   TSquareMatrix<T> res(sz);
   for (size_t i = 0; i < sz; i++)
     res.pMem[i] = pMem[i] + mat.pMem[i];
@@ -89,6 +92,8 @@ inline TSquareMatrix<T> TSquareMatrix<T>::operator+(const TSquareMatrix<T>& mat)
 template<class T>
 inline TSquareMatrix<T> TSquareMatrix<T>::operator-(const TSquareMatrix<T>& mat)
 {
+  if (sz != mat.sz)
+    throw "different sizes";
   TSquareMatrix<T> res(sz);
   for (size_t i = 0; i < sz; i++)
     res.pMem[i] = pMem[i] - mat.pMem[i];
@@ -115,19 +120,35 @@ inline TSquareMatrix<T> TSquareMatrix<T>::operator*(const TSquareMatrix<T>& mat)
 template<class T>
 inline TSquareMatrix<T> TSquareMatrix<T>::operator=(TSquareMatrix<T>&& mat)
 {
-  pMem = mat.pMem;
-  sz = mat.sz;
-  mat.pMem = nullptr;
-  mat.sz = 0;
+  if (this != &mat)
+  {
+    if (pMem != nullptr)
+      delete[] pMem;
+
+    pMem = mat.pMem;
+    sz = mat.sz;
+    mat.pMem = nullptr;
+    mat.sz = 0;
+  }
+  else
+    throw "copy itself";
   return *this;
 }
 
 template<class T>
 inline TSquareMatrix<T> TSquareMatrix<T>::operator=(const TSquareMatrix<T>& mat)
 {
-  TSquareMatrix tmp(mat.sz);
-  for (size_t i = 0; i < mat.sz; i++)
-    pMem[i] = mat.pMem[i];
+  if (this != &mat)
+  {
+    sz = mat.sz;
+    if (pMem != nullptr)
+      delete[] pMem;
+    pMem = new TDynamicVector<T>[sz];
+    for (size_t i = 0; i < mat.sz; i++)
+      pMem[i] = mat.pMem[i];
+  }
+  else
+    throw "copy itself";
   return *this;
 }
 

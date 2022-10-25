@@ -33,8 +33,8 @@ public:
   bool operator!=(const TDynamicVector<T>& v) const noexcept;
 
   TDynamicVector<T> operator+(T val);
-  TDynamicVector<T> operator+(bool val);
-  TDynamicVector<T> operator*(bool val);
+  TDynamicVector<T> operator-(T val);
+  TDynamicVector<T> operator*(T val);
 
   TDynamicVector<T> operator+(const TDynamicVector<T>& v);
   TDynamicVector<T> operator-(const TDynamicVector<T>& v);
@@ -139,7 +139,8 @@ inline TDynamicVector<T>& TDynamicVector<T>::operator=(const TDynamicVector<T>& 
         pMem[i] = v.pMem[i];
     }
   }
-
+  else
+    throw "copy itself";
   return *this;
 }
 
@@ -157,7 +158,8 @@ inline TDynamicVector<T>& TDynamicVector<T>::operator=(TDynamicVector<T>&& v) no
     v.sz = 0;
     v.pMem = nullptr;
   }
-
+  else
+    throw "copy itself";
   return *this;
 }
 
@@ -170,7 +172,10 @@ inline size_t TDynamicVector<T>::size(void) const noexcept
 template<typename T>
 inline T& TDynamicVector<T>::operator[](size_t ind)
 {
-  return pMem[ind];
+  if (ind < sz)
+    return pMem[ind];
+  else 
+    throw out_of_range("negative index");
 }
 
 template<typename T>
@@ -228,7 +233,7 @@ inline TDynamicVector<T> TDynamicVector<T>::operator+(T val)
 }
 
 template<typename T>
-inline TDynamicVector<T> TDynamicVector<T>::operator+(bool val)
+inline TDynamicVector<T> TDynamicVector<T>::operator-(T val)
 {
   TDynamicVector res(*this);
   for (int i = 0; i < sz; i++)
@@ -237,7 +242,7 @@ inline TDynamicVector<T> TDynamicVector<T>::operator+(bool val)
 }
 
 template<typename T>
-inline TDynamicVector<T> TDynamicVector<T>::operator*(bool val)
+inline TDynamicVector<T> TDynamicVector<T>::operator*(T val)
 {
   TDynamicVector res(*this);
   for (int i = 0; i < sz; i++)

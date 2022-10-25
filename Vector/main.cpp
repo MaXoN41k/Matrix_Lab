@@ -23,9 +23,9 @@ void testMatrix()
 
   m3 = m1 + m2;
 
-  cout << "m1=" << m1;
-  cout << "m2=" << m2;
-  cout << "m3=" << m3;
+  cout << "m1=\n" << m1;
+  cout << "m2=\n" << m2;
+  cout << "m3=m1+m2\n" << m3;
 }
 
 void testMultMatrix()
@@ -90,10 +90,10 @@ int main()
 {
   try
   {
-    testCreateMatix();
+    //testCreateMatix();
     //testMultMatrix();
     //testVectorIterator();
-    //testMatrix();
+    testMatrix();
   }
   catch (...)
   {
